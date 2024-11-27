@@ -1,8 +1,19 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>signInWithPopup</title>
-    <script src="signInWithPopup.js"></script>
-  </head>
-  <body><h1>signInWithPopup</h1></body>
+<head>
+  <title>Redirection vers MonExtension</title>
+</head>
+<body>
+  <script>
+    // Récupérer le jeton d'accès
+    const urlParams = new URLSearchParams(window.location.search);
+    const accessToken = urlParams.get('access_token');
+
+    // Envoyer le jeton à l'extension
+    chrome.runtime.sendMessage('dfoojgpdajifoacdmoimpkkpbdkgpkio', { accessToken }); 
+
+    // Rediriger vers une page de confirmation ou fermer la fenêtre
+    window.close(); 
+  </script>
+</body>
 </html>
